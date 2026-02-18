@@ -9,6 +9,9 @@ import { ReviewIdentity } from 'Domain/models/Review/ReviewIdentity/ReviewIdenti
 
 import { SQLClientManager } from '../SQLClientManager';
 
+import { injectable } from 'tsyringe';
+
+@injectable()
 export class SQLReviewRepository implements IReviewRepository {
   constructor(private clientManager: SQLClientManager) {}
 

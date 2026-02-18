@@ -4,15 +4,21 @@ import { BookRecommendationDomainService } from "Domain/services/Review/BookReco
 
 import { GetRecommendedBooksDTO } from "./GetRecommendedBooksDTO";
 
+import { injectable, inject } from 'tsyringe';
+
 export type GetRecommendedBooksCommand = {
   bookId: string;
   maxCount?: number;
 };
 
+@injectable()
 export class GetRecommendedBooksService {
   private bookRecommendationService: BookRecommendationDomainService;
 
-  constructor(private reviewRepository: IReviewRepository) {
+  constructor(
+    @inject("IReviewRepository")
+    private reviewRepository: IReviewRepository
+  ) {
     this.bookRecommendationService = new BookRecommendationDomainService();
   }
 

@@ -9,6 +9,8 @@ import { Title } from "Domain/models/Book/Title/Title";
 
 import { RegisterBookDTO } from "./RegisterBookDTO";
 
+import { injectable, inject } from 'tsyringe';
+
 export type RegisterBookCommand = {
   isbn: string;
   title: string;
@@ -16,9 +18,12 @@ export type RegisterBookCommand = {
   price: number;
 };
 
+@injectable()
 export class RegisterBookService {
   constructor(
+    @inject("IBookRepository")
     private bookRepository: IBookRepository,
+    @inject("ITransactionManager")
     private transactionManager: ITransactionManager
   ) {}
 

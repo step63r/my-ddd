@@ -8,6 +8,9 @@ import { Title } from "Domain/models/Book/Title/Title";
 
 import { SQLClientManager } from "../SQLClientManager";
 
+import { injectable } from 'tsyringe';
+
+@injectable()
 export class SQLBookRepository implements IBookRepository {
   constructor(private clientManager: SQLClientManager) {}
 
